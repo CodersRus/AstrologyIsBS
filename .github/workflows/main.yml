@@ -28,7 +28,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          cache-dependency-path: subdir/package-lock.jso
 
       - name: npm install and npm run build
         run: |
