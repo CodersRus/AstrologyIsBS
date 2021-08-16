@@ -29,7 +29,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: npm install and npm run build
-        run: npm run build:prod
+        run: | 
+          npm install
+          npm run build:prod
+          
         
       - name: Check
         run: echo Build Finished
