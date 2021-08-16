@@ -16,9 +16,34 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
       - name: Checkout Main branch
         uses: actions/checkout@v2
         
-      - name: Echo
-        run: echo Hello World
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install and npm run build
+        run: |
+          npm ci
+          npm run build:ci
+        
+      - name: Check
+        run: echo Build Finished
+        
+      
+        
+      
