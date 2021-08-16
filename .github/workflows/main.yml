@@ -30,6 +30,7 @@ jobs:
 
       - name: npm install and npm run build
         run: | 
+          cd astrology-is-bs
           npm install
           npm run build:prod
           
