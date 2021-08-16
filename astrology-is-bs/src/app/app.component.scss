@@ -1,0 +1,54 @@
+.site-wrapper {
+    content: "";
+    width: 100%;
+    display: table;
+    clear: both;
+}
+
+#front-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.main-column {
+    flex: 0 0 800px;
+    background-color: rgba(255, 255, 255, 0.534);
+    padding: 5em;
+    height: 1600px;
+}
+
+.side-column {
+    flex: 1;
+    pointer-events: none;
+}
+
+#back-container {
+    background-color: #190d29;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    width: 100%;
+    height: 100%;
+}
+
+.button-main {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    background-image: linear-gradient( to right, #667eea, #764ba2, #6b8dd6, #8e37d7);
+    box-shadow: 0 0 15px 0 rgba(116, 79, 168, 0.75);
+    padding: 10px 20px;
+}
+
+.main-title {
+    font-family: space-and-astronomy;
+}

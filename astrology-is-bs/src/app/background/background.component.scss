@@ -1,0 +1,47 @@
+@mixin on-circle($item-count, $circle-size) {
+    position: relative;
+    width: $circle-size;
+    height: $circle-size;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+    >* {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        $angle: (360 / $item-count);
+        $rot: 0;
+        @for $i from 1 through $item-count {
+            &:nth-of-type(#{$i}) {
+                transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
+            }
+            $rot: $rot+$angle;
+        }
+    }
+}
+
+@mixin spin($rotation-period) {
+    animation-name: spin;
+    animation-duration: $rotation-period;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-box: fill-box;
+    transform-origin: center;
+    fill: #C4C4C4;
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.circle-container {
+    @include spin(100s);
+    @include on-circle($item-count: 12, $circle-size: 75em);
+    top: -10em;
+    margin: 0 auto 0;
+}

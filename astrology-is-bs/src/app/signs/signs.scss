@@ -1,0 +1,149 @@
+.spin {
+    animation-name: spin;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-box: fill-box;
+    transform-origin: center;
+    fill: #C4C4C4;
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.star {
+    @extend .spin;
+}
+
+.constellation {
+    @extend .glow;
+    //transition: transform 0.3s ease-in-out;
+    &-path {
+        stroke: dashed;
+        fill: none;
+        stroke: #a593c9b0;
+        stroke-width: 2px;
+        stroke-dasharray: 4, 8;
+        stroke-linejoin: round;
+    }
+    &:hover {
+        transform: scale(1.05);
+        .constellation-path {
+            fill: none;
+            stroke: #a593c9;
+            stroke-width: 2px;
+            stroke-dasharray: 0;
+            stroke-linejoin: round;
+        }
+    }
+}
+
+.glow {
+    animation-name: glow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    @keyframes glow {
+        from {
+            filter: drop-shadow(0 0 3px #fff);
+        }
+        50% {
+            filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+        }
+        to {
+            filter: drop-shadow(0 0 3px #fff);
+        }
+    }
+}
+
+.twinkle {
+    animation-name: twinkle;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+    fill: red;
+    @keyframes twinkle {
+        from {
+            transform: scale(1.0);
+        }
+        40% {
+            transform: scale(0.8);
+        }
+        50% {
+            transform: scale(0.5);
+        }
+        60% {
+            transform: scale(0.8);
+        }
+        to {
+            transform: scale(1.0);
+        }
+    }
+}
+
+// .aquarius-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
+// .aries-constellation {
+//     position: fixed;
+//     top: 50%;
+//     left: 0%;
+// }
+// .cancer-constellation {
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+// }
+// .capricornus-constellation {
+//     position: fixed;
+//     top: 0%;
+//     left: 0%;
+// }
+// .gemini-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
+// .leo-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
+// .libra-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
+// .pisces-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
+// .sagittarius-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
+// .scorpio-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
+// .taurus-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
+// .virgo-constellation {
+//     position: fixed;
+//     top: 10%;
+//     left: 80%;
+// }
