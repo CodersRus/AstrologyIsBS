@@ -39,7 +39,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           ARGS: "-rltgoDzvO"
-          SOURCE: "dist/"
+          SOURCE: "astrology-is-bs/dist/"
           REMOTE_HOST: ${{ secrets.ISARIBI_HOST }}
           REMOTE_USER: ${{ secrets.ROOT_USERNAME }}
           EXCLUDE: "/dist/, /node_modules/"
