@@ -40,6 +40,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           ARGS: "-rltgoDzvO"
           SOURCE: "astrology-is-bs/dist/"
+          TARGET: "/var/www/astrologyisbs/dev_html/"
           REMOTE_HOST: ${{ secrets.ISARIBI_HOST }}
           REMOTE_USER: ${{ secrets.ROOT_USERNAME }}
           EXCLUDE: ""
