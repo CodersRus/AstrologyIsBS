@@ -29,8 +29,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: npm install and npm run build
-        run: npm run build:prod
-
+        run: | 
+          cd astrology-is-bs
+          npm install
+          npm run build:prod
+          
       - name: copy file via ssh key
         uses: appleboy/scp-action@master
         with:
@@ -40,6 +43,8 @@ jobs:
           key: ${{ secrets.KEY }}
           source: "test.txt"
           target: "test"
+        
+          
         
       - name: Check
         run: echo Build Finished
