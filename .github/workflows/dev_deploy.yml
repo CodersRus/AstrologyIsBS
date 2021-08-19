@@ -1,0 +1,39 @@
+name: Deploy Frontend to Development
+
+on:
+  push:
+    branches: development
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        node-version: ['14']
+    steps:
+      - name: 'Checking out branch: main'
+        uses: actions/checkout@v2
+        
+      - name: Building Node Version ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Installing NPM and building /dist/
+        run: | 
+          cd astrology-is-bs
+          npm install
+          npm run build:prod
+
+      - name: Deploying to Staging server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          ARGS: "-rltgoDzvO"
+          SOURCE: ${{ secrets.SOURCE_LOCATION }}
+          TARGET: ${{ secrets.DEV_TARGET }}
+          REMOTE_HOST: ${{ secrets.ISARIBI_HOST }}
+          REMOTE_USER: ${{ secrets.ROOT_USERNAME }}
+          EXCLUDE: ""
